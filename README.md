@@ -493,4 +493,70 @@ int main() {
 | 求值      | O(n)     | O(1)     | 逐項計算  |
 
 ### 測試與驗證
+![範例輸出入](src/images/測試.png)
 
+### 申論及開發報告
+
+**(1) 專案摘要**
+
+本專案實作一個 **多項式（Polynomial）類別**，以物件導向方式模擬數學上的多項式結構。
+
+目標是透過 **ADT** 與 **封裝** 的概念，建立可以進行多項式運算的類別，並利用 **多載** 使多項式操作自然化，例如：
+
+```
+Polynomial sum = p1 + p2;
+cout << "P(x) = " << sum;
+```
+
+實作重點如下：
+
+根據題目提供之ADT與private data members設計類別。
+
+使用 循環鏈結串列或動態陣列來儲存多項式各項。
+
+重載 >> 與 << 運算子以進行多項式的輸入與輸出。
+
+實作多項式加法、減法、乘法以及求值方法。
+
+**(2) 系統設計與類別架構**
+
+| Polynomial                          |
+| ----------------------------------- |
+| - degree : int                      |
+| - coef : double*                    |
+| + Polynomial(int deg=0)             |
+| + Polynomial(const Polynomial&)     |
+| + ~Polynomial()                     |
+| + operator=(const Polynomial&)      |
+| + operator>>(istream&, Polynomial&) |
+| + operator<<(ostream&, Polynomial&) |
+| + operator+(const Polynomial&)      |
+| + operator-(const Polynomial&)      |
+| + operator*(const Polynomial&)      |
+| + evaluate(double x): double        |
+
+**(3) 心得與反思**
+
+抽象資料型態（ADT）實作
+
+將抽象概念轉化為可執行類別，確保資料封裝與接口完整性。
+
+ADT 設計有助於程式結構化，降低錯誤發生率。
+
+運算子多載的重要性
+
+讓物件操作更自然，例如 p1 + p2 表示多項式加法。
+
+增加程式可讀性與維護性。
+
+**記憶體管理**
+
+使用動態陣列或鏈結串列時，必須注意深拷貝與釋放。
+
+避免物件之間共用指標導致資料錯誤或洩漏。
+
+**效率考量**
+
+使用 Horner’s Method 計算多項式可降低運算次數，提高效率。
+
+循環鏈結串列方便插入、刪除，但隨機存取效率低，適合項數中等的多項式。
